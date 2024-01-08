@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('validation_users', function (Blueprint $table) {
+        Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_voter')->unique()->constrained('users')->onDelete('cascade');
-            $table->string('nik')->nullable();
-            $table->string('nim')->nullable();
-            $table->string('validation_image');
+            $table->string('name');
+            $table->text('vision');
+            $table->text('mission');
+            $table->string('candidate_image');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('validation_users');
+        Schema::dropIfExists('candidates');
     }
 };
