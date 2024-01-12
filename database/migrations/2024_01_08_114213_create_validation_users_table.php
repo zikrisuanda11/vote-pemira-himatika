@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nik')->nullable();
             $table->string('nim')->nullable();
             $table->string('validation_image');
+            $table->enum('status', ['verified', 'not_verified'])->default('not_verified');
             $table->timestamps();
         });
     }
