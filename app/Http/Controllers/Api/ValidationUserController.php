@@ -13,6 +13,7 @@ class ValidationUserController extends Controller
     {
         // TODO buat filter sesuai status
         $data = User::query()
+            ->where('role', 'voter')
             ->with('voter')
             ->paginate();
 
@@ -21,7 +22,9 @@ class ValidationUserController extends Controller
 
     public function validating($id_voter)
     {
-        $validationUser = ValidationUser::find($id_voter);
+        // cari dari data user
+        $user = User::with('voter')->find($id_voter);
+        $validationUser = ValidationUser::find($user->voter->id);
 
         if (!$validationUser) {
             return $this->error('User not found', 404);
@@ -30,6 +33,8 @@ class ValidationUserController extends Controller
         $validationUser->update([
             'status' => 'verified'
         ]);
+
+        $validationUser->load('user');
 
         return $this->success($validationUser);
     }

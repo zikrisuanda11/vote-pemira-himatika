@@ -27,18 +27,25 @@ Route::post('register', [AuthController::class,'register']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', [AuthController::class,'logout']);
-
     Route::prefix('candidates')->group(function () {
         Route::get('/', [CandidateController::class,'index']);
         Route::get('/{id}', [CandidateController::class,'show']);
-        Route::post('/', [CandidateController::class,'store']);
-        Route::post('/{id}', [CandidateController::class,'update']);
-        Route::delete('/{id}', [CandidateController::class,'destroy']);
     });
 
-    Route::get('/voters', [ValidationUserController::class,'index']);
-    Route::put('/validate/{id_voter}', [ValidationUserController::class,'validating']);
+    Route::middleware('can:admin')->group(function () {
+        Route::prefix('candidates')->group(function () {
+            Route::post('/', [CandidateController::class,'store']);
+            Route::post('/{id}', [CandidateController::class,'update']);
+            Route::delete('/{id}', [CandidateController::class,'destroy']);
+        });
+        
+        Route::get('/voters', [ValidationUserController::class,'index']);
+        Route::put('/validate/{id_voter}', [ValidationUserController::class,'validating']);
+    });
 
-    Route::get('/vote', [VoteController::class,'index']);
-    Route::post('/vote', [VoteController::class,'vote']);
+    Route::middleware('can:voter')->group(function () {
+        Route::get('/vote', [VoteController::class,'index']);
+        Route::post('/vote', [VoteController::class,'vote']);
+    });
+
 });
