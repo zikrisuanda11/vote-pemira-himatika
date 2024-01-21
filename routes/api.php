@@ -18,14 +18,14 @@ use App\Http\Controllers\Api\ValidationUserController;
 |
 */
 
-Route::middleware(['auth', 'can:admin'])->group(function () {
-    Route::post('logout', [AuthController::class,'logout']);
+// Route::middleware(['auth', 'can:admin'])->group(function () {
+//     Route::post('logout', [AuthController::class,'logout']);
 
-});
-Route::prefix('candidates')->group(function () {
-    Route::get('/', [CandidateController::class,'index']);
-    Route::get('/{id}', [CandidateController::class,'show']);
-    Route::post('/', [CandidateController::class,'store']);
-    Route::post('/{id}', [CandidateController::class,'update']);
-    Route::delete('/{id}', [CandidateController::class,'destroy']);
-});
+// });
+// Route::prefix('candidates')->group(function () {
+//     Route::get('/', [CandidateController::class,'index']);
+//     Route::get('/{id}', [CandidateController::class,'show']);
+//     Route::post('/', [CandidateController::class,'store']);
+//     Route::post('/{id}', [CandidateController::class,'update']);
+//     Route::delete('/{id}', [CandidateController::class,'destroy']);
+// });

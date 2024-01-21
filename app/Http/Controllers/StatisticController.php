@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidate;
 use App\Models\Vote;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class StatisticController extends Controller
 {
@@ -51,6 +50,25 @@ class StatisticController extends Controller
             ->orderBy('tanggal')
             ->get();
 
+        if($data->count() > 0){
+            $startDate = Carbon::parse($data->first()->tanggal);
+            $endDate = Carbon::parse($data->last()->tanggal);
+            $missingDates = $startDate->diffInDays($endDate) - $data->count() + 1;
+    
+            if ($missingDates > 0) {
+                for ($i = 1; $i <= $missingDates; $i++) {
+                    $missingDate = $startDate->copy()->addDays($i);
+                    $missingData = (object) [
+                        'tanggal' => $missingDate->toDateString(),
+                        'total_suara' => 0,
+                    ];
+                    $data->push($missingData);
+                    $data = $data->sortBy('tanggal')->values();
+                }
+            }
+        }
+
+
         $data->transform(function ($item, $key) use ($data) {
             if ($key > 0) {
                 $item->total_suara += $data[$key - 1]->total_suara;
@@ -60,5 +78,4 @@ class StatisticController extends Controller
 
         return response()->json($data);
     }
-
 }

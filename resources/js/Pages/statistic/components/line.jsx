@@ -15,11 +15,13 @@ import { Line } from "react-chartjs-2";
 export default function LineChart({ dataCandidateSatu, dataCandidateDua, dataCandidateTiga }) {
   ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement,);
   const dateLabels = [
-    "2024-01-19",
-    "2024-01-20",
-    "2024-01-21",
-    "2024-01-22"
+    "2024-01-23",
+    "2024-01-24",
+    "2024-01-25",
+    "2024-01-26",
   ]
+
+  console.log(dataCandidateDua.original);
 
   const data = {
     labels: formattedData(dataCandidateSatu.original, dateLabels).map((data) => data.date),
@@ -45,7 +47,6 @@ export default function LineChart({ dataCandidateSatu, dataCandidateDua, dataCan
     ]
   }
 
-  // options juga pastikan lagi
   const options = {
     responsive: true,
     plugins: {
@@ -67,8 +68,7 @@ export default function LineChart({ dataCandidateSatu, dataCandidateDua, dataCan
 const formattedData = (dataCandidate, dateLabels) => {
   return dateLabels.map((dataLabel) => {
     const matchingData = dataCandidate.find((data) => data.tanggal === dataLabel);
-    // console.log(matchingData);
-    // ambil data terakhir dari tanggal sebelumnya
+  
     return {
       date: dataLabel,
       total_suara: matchingData ? matchingData.total_suara : 0

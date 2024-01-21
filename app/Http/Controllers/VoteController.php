@@ -23,6 +23,12 @@ class VoteController extends Controller
             'id_candidate' => 'required|integer|exists:candidates,id',
         ]);
 
+        $validateDate = $this->validateDate(date('Y-m-d'));
+
+        if(!$validateDate) {
+            return session(['error' => 'Voting hanya bisa dilakukan pada tanggal 24, 25, dan 26 Januari 2024']);
+        }
+
         $vote = Vote::where('id_voter', auth()->user()->google_id)->first();
 
         if($vote) {
@@ -34,6 +40,17 @@ class VoteController extends Controller
             'id_voter' => auth()->user()->google_id
         ]);
 
-        return session(['success' => 'Berhasil Voting Cuy!']);
+        return session(['success' => 'Berhasil Voting!']);
+    }
+
+    public function validateDate($dateNow)
+    {
+        $dateStart = date('Y-m-d', strtotime('2024-01-24'));
+        $dateEnd = date('Y-m-d', strtotime('2024-01-26'));
+
+        if($dateNow < $dateStart || $dateNow > $dateEnd) {
+            return false;   
+        }
+        return true;
     }
 }

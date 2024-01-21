@@ -11,7 +11,6 @@ class ValidationUserController extends Controller
 {
     public function index()
     {
-        // TODO buat filter sesuai status
         $data = User::query()
             ->where('role', 'voter')
             ->with('voter')
@@ -22,7 +21,6 @@ class ValidationUserController extends Controller
 
     public function validating($id_voter)
     {
-        // cari dari data user
         $user = User::with('voter')->find($id_voter);
         $validationUser = ValidationUser::find($user->voter->id);
 

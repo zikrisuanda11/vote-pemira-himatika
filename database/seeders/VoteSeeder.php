@@ -13,39 +13,20 @@ class VoteSeeder extends Seeder
      */
     public function run(): void
     {
-        Vote::create([
-            'id_candidate' => 1,
-            'id_voter' => '123456789'
-        ]);
-        Vote::create([
-            'id_candidate' => 1,
-            'id_voter' => '123456789'
-        ]);
-        Vote::create([
-            'id_candidate' => 1,
-            'id_voter' => '123456789'
-        ]);
-        Vote::create([
-            'id_candidate' => 1,
-            'id_voter' => '123456789'
-        ]);
+        for ($i = 0; $i < 100; $i++) {
+            $idCandidate = rand(1, 3);
+            
+            $startDate = strtotime('2024-01-24');
+            $endDate = strtotime('2024-01-27');
 
-        Vote::create([
-            'id_candidate' => 2,
-            'id_voter' => '123456781'
-        ]);
+            $createdAt = date('Y-m-d H:i:s', $startDate + rand(0, $endDate - $startDate));
 
-        Vote::create([
-            'id_candidate' => 3,
-            'id_voter' => '123456783'
-        ]);
-        Vote::create([
-            'id_candidate' => 3,
-            'id_voter' => '123456783'
-        ]);
-        Vote::create([
-            'id_candidate' => 3,
-            'id_voter' => '123456783'
-        ]);
+            Vote::create([
+                'id_candidate' => $idCandidate,
+                'id_voter' => '123456789',
+                'created_at' => $createdAt,
+            ]);
+        }
+    
     }
 }
