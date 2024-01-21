@@ -7,7 +7,9 @@
       <title>Vote</title>
       @vite('resources/js/app.jsx')
       @vite('resources/css/app.css')
+      <link rel="icon" type="image/png" sizes="144x144" href="/assets/logo.png">
       @inertiaHead
+      <link href="https://fonts.cdnfonts.com/css/dm-sans" rel="stylesheet">
   </head>
 
   <body>

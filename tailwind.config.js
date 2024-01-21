@@ -7,7 +7,15 @@ export default {
     './resources/js/**/*.jsx',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'sans-serif'],
+      },
+      colors: {
+        primary: '#11047A',
+        secondary: '#F4F7FE',
+      }
+    },
   },
   plugins: [],
 }

@@ -18,11 +18,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'google_id',
         'name',
         'email',
-        'password',
-        'role'
+        'nim',
+        'picture',
     ];
+
+    protected $primaryKey = 'google_id';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -30,7 +38,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -41,13 +48,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
-
-    public function voter()
-    {
-        return $this->hasOne(ValidationUser::class, 'id_voter', 'id');
-    }
 
     public function vote()
     {

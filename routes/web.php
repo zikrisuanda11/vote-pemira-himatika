@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,9 +17,15 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', function(){
-    return inertia('auth/SignIn');
+Route::get('/login', [GoogleLoginController::class, 'loginPage'])->name('login.page');
+
+Route::get('/', [VoteController::class, 'index'])->name('vote');
+Route::get('/statistics', [StatisticController::class, 'index'])->name('statistic');
+
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToProvider'])->name('login');
+Route::get('/auth/redirect', [GoogleLoginController::class, 'callback'])->name('google.callback');
+
+Route::middleware('auth')->group(function() {
+    Route::post('/logout', [GoogleLoginController::class, 'logout'])->name('logout');
+    Route::post('/vote', [VoteController::class, 'vote'])->name('vote.post');
 });
