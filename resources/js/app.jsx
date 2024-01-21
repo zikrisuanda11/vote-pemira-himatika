@@ -1,6 +1,7 @@
 import React from 'react'
 import { createInertiaApp } from '@inertiajs/react'
 import { createRoot } from 'react-dom/client'
+import { ChakraProvider } from '@chakra-ui/react'
 
 createInertiaApp({
   resolve: name => {
@@ -8,6 +9,16 @@ createInertiaApp({
     return pages[`./Pages/${name}.jsx`]
   },
   setup({ el, App, props }) {
-    createRoot(el).render(<App {...props} />)
+    createRoot(el).render(
+      <ChakraProvider>
+        <App {...props} />
+      </ChakraProvider>
+    )
+  },
+  progress: {
+    delay: 250,
+    color: '#29d',
+    includeCSS: true,
+    showSpinner: false,
   },
 })
