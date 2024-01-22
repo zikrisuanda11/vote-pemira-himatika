@@ -25,5 +25,5 @@ RUN npm install
 
 RUN npm run build
 
-EXPOSE 8010
-CMD php artisan migrate && php artisan serve --host=0.0.0.0 --port=8010
+EXPOSE 8080
+CMD php artisan serve --host=0.0.0.0 --port=8080
