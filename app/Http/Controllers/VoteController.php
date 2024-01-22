@@ -13,7 +13,7 @@ class VoteController extends Controller
         $candidates = Candidate::all();
 
         return inertia('vote/index', [
-            'candidates' => $candidates
+            'candidates' => $candidates,
         ]);
     }
 
@@ -25,13 +25,13 @@ class VoteController extends Controller
 
         $validateDate = $this->validateDate(date('Y-m-d'));
 
-        if(!$validateDate) {
+        if (!$validateDate) {
             return session(['error' => 'Voting hanya bisa dilakukan pada tanggal 24, 25, dan 26 Januari 2024']);
         }
 
         $vote = Vote::where('id_voter', auth()->user()->google_id)->first();
 
-        if($vote) {
+        if ($vote) {
             return session(['error' => 'Kamu sudah voting!']);
         }
 
@@ -48,8 +48,8 @@ class VoteController extends Controller
         $dateStart = date('Y-m-d', strtotime('2024-01-24'));
         $dateEnd = date('Y-m-d', strtotime('2024-01-26'));
 
-        if($dateNow < $dateStart || $dateNow > $dateEnd) {
-            return false;   
+        if ($dateNow < $dateStart || $dateNow > $dateEnd) {
+            return false;
         }
         return true;
     }

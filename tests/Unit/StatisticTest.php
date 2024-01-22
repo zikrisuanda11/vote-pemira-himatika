@@ -13,7 +13,7 @@ class StatisticTest extends TestCase
     public function test_get_data_cadidate_perday()
     {
         $statistic = new StatisticController();
-        error_log($statistic->getVoteCandidatePerDay(2));
+        // error_log($statistic->getVoteCandidatePerDay(2));
 
     }
 }

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vote;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Vote;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StatisticController extends Controller
 {
     public function index()
     {
+
         $dataCandidate = $this->getVotePersentage();
         $totalVote = Vote::count();
         $dataCandidateSatu = $this->getVoteCandidatePerDay(1);
@@ -50,11 +52,11 @@ class StatisticController extends Controller
             ->orderBy('tanggal')
             ->get();
 
-        if($data->count() > 0){
+        if ($data->count() > 0) {
             $startDate = Carbon::parse($data->first()->tanggal);
             $endDate = Carbon::parse($data->last()->tanggal);
             $missingDates = $startDate->diffInDays($endDate) - $data->count() + 1;
-    
+
             if ($missingDates > 0) {
                 for ($i = 1; $i <= $missingDates; $i++) {
                     $missingDate = $startDate->copy()->addDays($i);

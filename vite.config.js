@@ -11,5 +11,6 @@ export default defineConfig({
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
         return pages[`./Pages/${name}.jsx`]
-      },
+    },
+    build: { chunkSizeWarningLimit: 1600, }
 });

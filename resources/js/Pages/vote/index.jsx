@@ -6,7 +6,7 @@ import { useToast } from '@chakra-ui/react'
 import { router } from "@inertiajs/react";
 
 export default function VotePage({ auth, candidates, error, success }) {
-
+  
   const toast = useToast();
 
   useEffect(() => {

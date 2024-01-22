@@ -21,8 +21,6 @@ export default function LineChart({ dataCandidateSatu, dataCandidateDua, dataCan
     "2024-01-26",
   ]
 
-  console.log(dataCandidateDua.original);
-
   const data = {
     labels: formattedData(dataCandidateSatu.original, dateLabels).map((data) => data.date),
     datasets: [
