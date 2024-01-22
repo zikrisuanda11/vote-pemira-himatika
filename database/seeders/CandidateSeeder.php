@@ -19,13 +19,13 @@ class CandidateSeeder extends Seeder
             'mission' => 'Membentuk mahasiswa Informatika berjiwa enterpreneurship 
                 Berperan aktif dalam kemajuan teknologi informasi dan komunikasi di Indonesia
                 Meningkatkan kepedulian mahasiswa Informatika terhadap lingkungan dan masyarakat',
-            'candidate_image' => '/storage/candidate_image/WdRReDZ23td00geNAHECDSokbgFVNTx3OmS9WJFQ.png'
+            'candidate_image' => '/assets/candidate_image/WdRReDZ23td00geNAHECDSokbgFVNTx3OmS9WJFQ.png'
         ]);
         Candidate::create([
             'name' => 'Fadillah Paula & Timotius Agustio Ananda Prasetyo',
             'vision' => '"Pemimpin terbesar belum tentu orang yang melakukan hal-hal terbesar. Dialah yang membuat orang melakukan hal-hal terbesar."',
             'mission' => 'Selamat berproses dan berjuang calon pemimpin.',
-            'candidate_image' => '/storage/candidate_image/63xHXRmDtn2cEntgRyRQ9RDuRRxap524fCaOWSWN.png'
+            'candidate_image' => '/assets/candidate_image/63xHXRmDtn2cEntgRyRQ9RDuRRxap524fCaOWSWN.png'
         ]);
         Candidate::create([
             'name' => 'M. Dimas Zulvian & Bryan Al-Raihan',
@@ -33,7 +33,7 @@ class CandidateSeeder extends Seeder
             'mission' => 'Mewujudkan naungan yang Inspiratif dan Aspiratif bagi Mahasiswa Informatika Universitas mulia.
                 Menjadikan lingkungan yang Komunikatif dan Kolaboratif agar mengasah kemampuan bekerja dalam tim pada setiap anggota.
                 Memperluas relasi dan menjaga komunikasi antar anggota serta menerapkan sistem kerja yang efektif dan produktif.',
-            'candidate_image' => '/storage/candidate_image/UmOVCd8O4MEXUMocju1VgZqw18uqFIaPUwb7Z5nN.png'
+            'candidate_image' => '/assets/candidate_image/UmOVCd8O4MEXUMocju1VgZqw18uqFIaPUwb7Z5nN.png'
         ]);
     }
 }
