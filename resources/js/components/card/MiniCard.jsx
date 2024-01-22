@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MiniCard({ icon, title, value }) {
   return (
-    <div className="rounded-xl bg-white p-5 h-fit flex gap-2 items-center w-60 shadow-md">
+    <div className="rounded-xl bg-white p-5 h-fit flex gap-2 items-center w-full lg:w-60 shadow-md">
       <div className="bg-secondary rounded-full h-12 w-12 flex items-center justify-center">
         {icon}
       </div>

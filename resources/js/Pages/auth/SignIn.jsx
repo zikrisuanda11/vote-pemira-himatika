@@ -19,7 +19,7 @@ export default function SignIn({ success }) {
   }, [success])
 
   return (
-    <div className="flex justify-center items-center h-svh">
+    <div className="flex justify-center items-center h-svh bg-white">
       <div className="flex flex-col justify-center items-center gap-10">
         {/* ilustration */}
         <img src="/assets/techny-receiving-a-letter-or-email.gif" alt="" className="h-96 " draggable="false" />

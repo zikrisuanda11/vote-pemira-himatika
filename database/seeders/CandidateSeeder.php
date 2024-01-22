@@ -22,12 +22,6 @@ class CandidateSeeder extends Seeder
             'candidate_image' => '/assets/candidate_image/WdRReDZ23td00geNAHECDSokbgFVNTx3OmS9WJFQ.png'
         ]);
         Candidate::create([
-            'name' => 'Fadillah Paula & Timotius Agustio Ananda Prasetyo',
-            'vision' => '"Pemimpin terbesar belum tentu orang yang melakukan hal-hal terbesar. Dialah yang membuat orang melakukan hal-hal terbesar."',
-            'mission' => 'Selamat berproses dan berjuang calon pemimpin.',
-            'candidate_image' => '/assets/candidate_image/63xHXRmDtn2cEntgRyRQ9RDuRRxap524fCaOWSWN.png'
-        ]);
-        Candidate::create([
             'name' => 'M. Dimas Zulvian & Bryan Al-Raihan',
             'vision' => '"Menjadikan Himatika Universitas mulia sebagai himpunan yang Produktif, Kreatif, Aspiratif, dan Berintegritas"',
             'mission' => 'Mewujudkan naungan yang Inspiratif dan Aspiratif bagi Mahasiswa Informatika Universitas mulia.

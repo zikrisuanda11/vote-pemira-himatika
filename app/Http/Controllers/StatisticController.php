@@ -16,14 +16,12 @@ class StatisticController extends Controller
         $totalVote = Vote::count();
         $dataCandidateSatu = $this->getVoteCandidatePerDay(1);
         $dataCandidateDua = $this->getVoteCandidatePerDay(2);
-        $dataCandidateTiga = $this->getVoteCandidatePerDay(3);
 
         return inertia('statistic/index', [
             'dataCandidate' => $dataCandidate,
             'totalVote' => $totalVote,
             'dataCandidateSatu' => $dataCandidateSatu,
             'dataCandidateDua' => $dataCandidateDua,
-            'dataCandidateTiga' => $dataCandidateTiga,
         ]);
     }
 

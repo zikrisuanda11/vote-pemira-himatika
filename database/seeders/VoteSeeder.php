@@ -14,7 +14,7 @@ class VoteSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 100; $i++) {
-            $idCandidate = rand(1, 3);
+            $idCandidate = rand(1, 2);
             
             $startDate = strtotime('2024-01-24');
             $endDate = strtotime('2024-01-27');
@@ -23,7 +23,7 @@ class VoteSeeder extends Seeder
 
             Vote::create([
                 'id_candidate' => $idCandidate,
-                'id_voter' => '123456789',
+                'id_voter' => '108921521398512041897',
                 'created_at' => $createdAt,
             ]);
         }

@@ -34,6 +34,7 @@ return [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => 'https://pemira.himatika.xyz/auth/redirect',
+        // 'redirect' => 'http://localhost:8000/auth/redirect',
     ],
 
 ];

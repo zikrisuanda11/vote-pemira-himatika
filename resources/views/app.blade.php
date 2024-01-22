@@ -12,7 +12,7 @@
       <link href="https://fonts.cdnfonts.com/css/dm-sans" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="bg-secondary">
     @inertia
   </body>
 

@@ -25,12 +25,12 @@ export default function index({ auth, dataCandidate, totalVote, dataCandidateSat
             />
           ))}
         </div>
-        <div className="flex gap-5 justify-center">
-          <div className="rounded-xl bg-white p-5 space-y-5 h-fit w-4/12 shadow-md">
+        <div className="flex gap-5 justify-center flex-col lg:flex-row items-center mb-24 mx-2">
+          <div className="rounded-xl bg-white p-5 space-y-5 h-fit lg:w-4/12 shadow-md">
             <h1 className="font-bold text-center">Data Perolahan Suara</h1>
             <DoughnutChart dataCandidate={dataCandidate} />
           </div>
-          <div className="rounded-xl bg-white p-5 space-y-5 h-fit w-7/12 shadow-md">
+          <div className="rounded-xl bg-white p-5 space-y-5 h-fit w-96 lg:w-7/12 shadow-md">
             <h1 className="font-bold text-center">Data Perolahan Suara</h1>
             <LineChart dataCandidateSatu={dataCandidateSatu} dataCandidateDua={dataCandidateDua} dataCandidateTiga={dataCandidateTiga} />
           </div>

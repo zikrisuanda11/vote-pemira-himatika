@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import ModalVote from "./components/modal";
+// import ModalVote from "./components/modal";
 import VoteLayout from "../../layouts/vote";
-import DrawerVote from "./components/drawer";
+// import DrawerVote from "./components/drawer";
 import { useToast } from '@chakra-ui/react'
 import { router } from "@inertiajs/react";
+import CardCandidate from "./components/cardCandidate";
 
 export default function VotePage({ auth, candidates, error, success }) {
   
@@ -34,22 +35,14 @@ export default function VotePage({ auth, candidates, error, success }) {
 
   return (
     <VoteLayout auth={auth}>
-      <div className="flex flex-col items-center gap-10 w-full mt-10">
+      <div className="flex flex-col items-center gap-10 w-full mt-10 mb-24">
         <header className="flex flex-col items-center gap-2">
-          <h1 className="font-bold text-3xl">Vote Calon ketua Himatika</h1>
+          <h1 className="text-center font-bold text-3xl">Vote Calon ketua Himatika</h1>
           <p className="text-center text-sm text-slate-500">Pemilihan dapat dilakukan dari tanggal <br /> 24 Januari 2024 s/d 26 Januari 2024.</p>
         </header>
-        <main className="flex gap-10">
+        <main className=" flex gap-10 flex-wrap lg:flex-nowrap items-center justify-center">
           {candidates.map((candidate, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-2 bg-white rounded-xl px-5 py-5 shadow-md">
-              <img src={candidate.candidate_image} alt="" className="h-80 rounded-xl" draggable="false" />
-              <div className="space-x-3">
-                {auth && (
-                  <ModalVote candidate={candidate} />
-                )}
-                <DrawerVote candidate={candidate} />
-              </div>
-            </div>
+            <CardCandidate key={idx} candidate_image={candidate.candidate_image} auth={auth} candidate={candidate}/>
           ))}
         </main>
       </div>
