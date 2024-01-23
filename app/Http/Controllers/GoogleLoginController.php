@@ -21,17 +21,10 @@ class GoogleLoginController extends Controller
     {
         $googleUser = Socialite::driver('google')->user();
 
-        // TODO buat filter email pastikan @students.universitasmulia.ac.id
-        $validateEmail = $this->validateEmail($googleUser->email);
-        
-        if (!$validateEmail) {
-            return redirect('/')->with('error', 'Bukan Mahasiswa Universitas Mulia!');
-        }
+        $validationResult = $this->validateUser($googleUser);
 
-        $validateNim = $this->validateNim($googleUser->user['given_name']);
-
-        if (!$validateNim) {
-            return redirect('/')->with('error', 'Bukan Mahasiswa Informatika!');
+        if (!$validationResult['success']) {
+            return redirect('/')->with('error', $validationResult['errorMessage']);
         }
 
         $findUser = User::where('google_id', $googleUser->id)->first();
@@ -60,6 +53,22 @@ class GoogleLoginController extends Controller
         return to_route('vote')->with('success', 'You have successfully logged out!');
     }
 
+    public function validateUser($googleUser)
+    {
+        $validateEmail = $this->validateEmail($googleUser->email);
+        $validateNim = $this->validateNim($googleUser->user['given_name']);
+
+        if (!$validateEmail) {
+            return ['success' => false, 'errorMessage' => 'Bukan Mahasiswa Universitas Mulia!'];
+        }
+
+        if (!$validateNim) {
+            return ['success' => false, 'errorMessage' => 'Bukan Mahasiswa Informatika!'];
+        }
+
+        return ['success' => true];
+    }
+
     public function validateNim($nim)
     {
         if (strlen($nim) === 7) {
@@ -79,12 +88,12 @@ class GoogleLoginController extends Controller
         if (count($emailParts) !== 2) {
             return false;
         }
-        
+
         $domain = $emailParts[1];
         if ($domain !== 'students.universitasmulia.ac.id') {
             return false;
         }
-        
+
         return true;
     }
 }

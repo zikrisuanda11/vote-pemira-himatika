@@ -23,11 +23,11 @@ class ValidateEmailTest extends TestCase
         $this->assertTrue( $googleLogin->validateEmail('zasdfasdfikri@students.universitasmulia.ac.id'));
         // $this->assertTrue( $googleLogin->validateEmail('zasdfasdfikri@students.universitasmulia.ac.idd'));
 
-        dd(
-            $googleLogin->validateEmail('zikri@gmail.com'), 
-            $googleLogin->validateEmail('zikri@students.universitasmulia.ac.id'),
-            $googleLogin->validateEmail('zasdfasdfikri@sudents.universitasmulia.ac.id')
-        );
+        // dd(
+        //     $googleLogin->validateEmail('zikri@gmail.com'), 
+        //     $googleLogin->validateEmail('zikri@students.universitasmulia.ac.id'),
+        //     $googleLogin->validateEmail('zasdfasdfikri@sudents.universitasmulia.ac.id')
+        // );
         
     }
 }
