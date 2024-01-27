@@ -38,7 +38,7 @@ export default function VotePage({ auth, candidates, error, success }) {
       <div className="flex flex-col items-center gap-10 w-full mt-10 mb-24">
         <header className="flex flex-col items-center gap-2">
           <h1 className="text-center font-bold text-3xl">Vote Calon ketua Himatika</h1>
-          <p className="text-center text-sm text-slate-500">Pemilihan dapat dilakukan dari tanggal <br /> 24 Januari 2024 s/d 26 Januari 2024.</p>
+          <p className="text-center text-sm text-slate-500">Pemilihan dapat dilakukan dari tanggal <br /> 24 Januari 2024 s/d 28 Januari 2024.</p>
         </header>
         <main className=" flex gap-10 flex-wrap lg:flex-nowrap items-center justify-center">
           {candidates.map((candidate, idx) => (

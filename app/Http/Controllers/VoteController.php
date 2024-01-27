@@ -26,7 +26,7 @@ class VoteController extends Controller
         $validateDate = $this->validateDate(date('Y-m-d'));
 
         if (!$validateDate) {
-            return session(['error' => 'Voting hanya bisa dilakukan pada tanggal 24, 25, dan 26 Januari 2024']);
+            return session(['error' => 'Voting hanya bisa dilakukan pada tanggal 24 s/d 28 Januari 2024']);
         }
 
         $vote = Vote::where('id_voter', auth()->user()->google_id)->first();
@@ -46,7 +46,7 @@ class VoteController extends Controller
     public function validateDate($dateNow)
     {
         $dateStart = date('Y-m-d', strtotime('2024-01-24'));
-        $dateEnd = date('Y-m-d', strtotime('2024-01-26'));
+        $dateEnd = date('Y-m-d', strtotime('2024-01-29'));
 
         if ($dateNow < $dateStart || $dateNow > $dateEnd) {
             return false;

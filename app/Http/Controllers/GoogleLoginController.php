@@ -21,11 +21,11 @@ class GoogleLoginController extends Controller
     {
         $googleUser = Socialite::driver('google')->user();
 
-        $validationResult = $this->validateUser($googleUser);
+        // $validationResult = $this->validateUser($googleUser);
 
-        if (!$validationResult['success']) {
-            return redirect('/')->with('error', $validationResult['errorMessage']);
-        }
+        // if (!$validationResult['success']) {
+        //     return redirect('/')->with('error', $validationResult['errorMessage']);
+        // }
 
         $findUser = User::where('google_id', $googleUser->id)->first();
 
