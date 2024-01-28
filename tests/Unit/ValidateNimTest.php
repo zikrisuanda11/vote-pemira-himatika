@@ -24,5 +24,8 @@ class ValidateNimTest extends TestCase
 
         $invalidNim = '2188002';
         $this->assertFalse($controller->validateNim($invalidNim));
+
+        $invalidNim = '1911001';
+        $this->assertTrue($controller->validateNim($invalidNim));
     }
 }

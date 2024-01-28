@@ -19,21 +19,6 @@ class UserSeeder extends Seeder
             'nim' => '123123123',
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'role' => 'admin',
-        ]);
-        User::create([
-            'google_id' => '123456781',
-            'nim' => '123123123',
-            'name' => 'Admin',
-            'email' => 'admidn@example.com',
-            'role' => 'admin',
-        ]);
-        User::create([
-            'google_id' => '123456783',
-            'nim' => '123123123',
-            'name' => 'Admin',
-            'email' => 'admicn@example.com',
-            'role' => 'admin',
         ]);
         
     }

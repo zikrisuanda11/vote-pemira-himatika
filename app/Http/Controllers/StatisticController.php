@@ -53,13 +53,11 @@ class StatisticController extends Controller
         if ($data->count() > 0) {
             $startDate = Carbon::parse($data->first()->tanggal);
             $endDate = Carbon::parse($data->last()->tanggal);
-            $missingDates = $startDate->diffInDays($endDate) - $data->count() + 1;
 
-            if ($missingDates > 0) {
-                for ($i = 1; $i <= $missingDates; $i++) {
-                    $missingDate = $startDate->copy()->addDays($i);
+            for($i = $startDate; $i <= $endDate; $i->addDay()){
+                if($data->where('tanggal', $i->toDateString())->count() == 0){
                     $missingData = (object) [
-                        'tanggal' => $missingDate->toDateString(),
+                        'tanggal' => $i->toDateString(),
                         'total_suara' => 0,
                     ];
                     $data->push($missingData);
@@ -67,7 +65,6 @@ class StatisticController extends Controller
                 }
             }
         }
-
 
         $data->transform(function ($item, $key) use ($data) {
             if ($key > 0) {

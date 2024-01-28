@@ -17,13 +17,13 @@ class VoteSeeder extends Seeder
             $idCandidate = rand(1, 2);
             
             $startDate = strtotime('2024-01-24');
-            $endDate = strtotime('2024-01-27');
+            $endDate = strtotime('2024-01-29');
 
             $createdAt = date('Y-m-d H:i:s', $startDate + rand(0, $endDate - $startDate));
 
             Vote::create([
                 'id_candidate' => $idCandidate,
-                'id_voter' => '108921521398512041897',
+                'id_voter' => '123456789',
                 'created_at' => $createdAt,
             ]);
         }
