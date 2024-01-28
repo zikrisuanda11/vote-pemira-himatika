@@ -30,6 +30,7 @@ class StatisticController extends Controller
         $data = DB::table('votes')
             ->select('id_candidate', DB::raw('COUNT(*) as total_suara'))
             ->groupBy('id_candidate')
+            ->orderBy('id_candidate', 'asc')
             ->get();
 
         $totalSuara = $data->sum('total_suara');
