@@ -46,7 +46,7 @@ class VoteController extends Controller
     public function validateDate($dateNow)
     {
         $dateStart = date('Y-m-d', strtotime('2024-01-24'));
-        $dateEnd = date('Y-m-d', strtotime('2024-01-29'));
+        $dateEnd = date('Y-m-d', strtotime('2024-01-28'));
 
         if ($dateNow < $dateStart || $dateNow > $dateEnd) {
             return false;
